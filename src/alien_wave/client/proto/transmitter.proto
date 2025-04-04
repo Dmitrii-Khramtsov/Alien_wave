@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package transmitter;
+
+option go_package = "github.com/lonmouth/alien_wave/server/proto";
+
+service TransmitterService {
+  rpc StreamData (Empty) returns (stream Transmission);
+}
+
+message Empty {}
+
+message Transmission {
+  string session_id = 1;
+  double frequency = 2;
+  int64 timestamp_utc = 3;
+}
